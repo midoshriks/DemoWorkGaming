@@ -82,4 +82,9 @@ class User extends Authenticatable implements HasMedia
     {
         return $this->belongsToMany(level::class, 'user_levels');
     }
+
+    // public function orders()
+    // {
+    //     return $this->belongsToMany(Order::class, 'orders');
+    // }
 }

@@ -10,6 +10,8 @@ use App\Http\Controllers\Dashboard\LevelsController;
 use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\Dashboard\QuestionsController;
 use App\Http\Controllers\Dashboard\UsersController;
+use App\Http\Controllers\OredersController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +29,13 @@ Route::group(
     function () {
         Route::prefix('dashboard')->name('dashboard.')->middleware(['auth'])->group(function () {
             Auth::routes();
+
+
+            Route::get('/backup', function () {
+                // Artisan::call('config:clear');
+                // Artisan::call('backup:run');
+                // return "backup run serve now";
+            });
 
             // Dahsbboard
             Route::get('/index', 'DashboardController@index')->name('index');
@@ -54,6 +63,9 @@ Route::group(
             Route::post('questions/imoprt', 'QuestionsController@import')->name('questions.import');
             Route::get('qouestions/export/', 'QuestionsController@export')->name('questions.export');
 
+            // Orders
+            Route::resource('/orders', 'OredersController');
+
             // Route::get('/tables', function() {
             //     return view('test_table');
             // });
@@ -62,6 +74,7 @@ Route::group(
             // Route::resource('/answers', 'AnswersController');
             // Route::get('/export','AnswersController@export')->name('export');
             // Route::post('/import','AnswersController@import')->name('import');
+
         });
     }
 );
