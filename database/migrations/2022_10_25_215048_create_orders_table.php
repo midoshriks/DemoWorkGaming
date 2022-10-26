@@ -21,7 +21,6 @@ class CreateOrdersTable extends Migration
             $table->bigInteger('product_id')->unsigned();
             $table->bigInteger('type_id')->unsigned();
             $table->double('amount');
-            $table->double('product_price');
             $table->double('total');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

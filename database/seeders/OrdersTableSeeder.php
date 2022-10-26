@@ -31,25 +31,21 @@ class OrdersTableSeeder extends Seeder
                 'payment_method_id' => 1,
                 'product_id' => $i, // $products->id,
                 'type_id' => 9, // $types->id,
-                'amount' => 10, // $products->price,
-                'product_price' => 100, // $products->price,
+                'amount' => 25, // $products->quantity,
                 'total' =>  1000, // $products->price,
-
             ]);
         }
 
         for ($i = 1; $i < 4; $i++) {
             # code...
             $orders = Order::create([
-                'order_numper' =>  1000 . $i+3,
+                'order_numper' =>  1000 . $i + 3,
                 'user_id' => $i, // $users->id,
                 'payment_method_id' => 1,
-                'product_id' => $i+4, // $products->id,
+                'product_id' => $i + 4, // $products->id,
                 'type_id' => 10, // $types->id,
-                'amount' => 20, // $products->price,
-                'product_price' => 200, // $products->price,
+                'amount' => 25, // $products->quantity,
                 'total' =>  2000, // $products->price,
-
             ]);
         }
     }

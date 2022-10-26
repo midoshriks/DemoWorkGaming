@@ -10,16 +10,16 @@ use App\Http\Controllers\Dashboard\LevelsController;
 use App\Http\Controllers\Dashboard\ProductsController;
 use App\Http\Controllers\Dashboard\QuestionsController;
 use App\Http\Controllers\Dashboard\UsersController;
-use App\Http\Controllers\OredersController;
+use App\Http\Controllers\OrdersController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-    // welcome page Starat Login dahboard
-    Route::get('/', function (){
-        return view('auth.login');
-    });
+// welcome page Starat Login dahboard
+Route::get('/', function () {
+    return view('auth.login');
+});
 
 Route::group(
     [
@@ -40,7 +40,7 @@ Route::group(
             // Dahsbboard
             Route::get('/index', 'DashboardController@index')->name('index');
             // languages
-            Route::resource('/languages', 'LanguagesController')->except(['create','store','show']);
+            Route::resource('/languages', 'LanguagesController')->except(['create', 'store', 'show']);
             // developers
             Route::resource('/developers', 'DeveloperController');
 
@@ -52,7 +52,7 @@ Route::group(
             Route::resource('/levels', 'LevelsController');
 
             // Products
-            Route::resource('/products','ProductsController');
+            Route::resource('/products', 'ProductsController');
 
             // Helpers
             Route::resource('/helpers', 'HelpersController');
@@ -64,7 +64,8 @@ Route::group(
             Route::get('qouestions/export/', 'QuestionsController@export')->name('questions.export');
 
             // Orders
-            Route::resource('/orders', 'OredersController');
+            Route::resource('/orders', 'OrdersController');
+            Route::put('/order/active/{id}', 'OrdersController@updatetype')->name('order.active');
 
             // Route::get('/tables', function() {
             //     return view('test_table');
@@ -78,4 +79,3 @@ Route::group(
         });
     }
 );
-

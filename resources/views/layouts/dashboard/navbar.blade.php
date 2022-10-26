@@ -156,7 +156,7 @@
                         </span>
                     </a>
                     </li>
-                    {{-- @mido_shriks dropdowen = {orders } --}}
+                    {{-- @mido_shriks dropdowen = {questions } --}}
 
                     {{-- @mido_shriks dropdowen = {orders } --}}
                     @if (app()->getLocale() == 'en')
@@ -181,7 +181,7 @@
                         </span>
                     </a>
                     </li>
-                    {{-- @mido_shriks dropdowen = {questions } --}}
+                    {{-- @mido_shriks dropdowen = {orders } --}}
 
 
 

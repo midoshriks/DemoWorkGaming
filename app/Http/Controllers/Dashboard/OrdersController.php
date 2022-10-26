@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
-use App\Models\Order;
 use App\Models\type;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
-class OredersController extends Controller
+class OrdersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -86,5 +87,34 @@ class OredersController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function updatetype(Request $request, Order $order)
+    {
+        $order_type = Order::find($request->id);
+        if ($order_type->type_id == 10) {
+            # code...
+            $order_type->type_id = $request->type_id;
+
+            $order_type->save();
+            // dd($order_type->type_id);
+            Alert::toast('Success Order pending ' . $order->order_numper);
+        } else {
+            # code...
+            $order_type->type_id = $request->type_id;
+
+            $order_type->save();
+            // dd($order_type->type_id);
+            Alert::toast('Success Order confirm ' . $order->order_numper);
+        }
+
+        return redirect()->route('dashboard.orders.index');
     }
 }
